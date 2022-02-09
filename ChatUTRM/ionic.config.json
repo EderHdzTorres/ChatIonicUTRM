@@ -1,7 +1,0 @@
-{
-  "name": "ChatUTRM",
-  "integrations": {
-    "capacitor": {}
-  },
-  "type": "angular"
-}
