@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AlertController, NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-contactos',
@@ -7,9 +8,33 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ContactosPage implements OnInit {
 
-  constructor() { }
+  constructor(public alertController: AlertController, public navCtrl: NavController) { }
 
   ngOnInit() {
+  }
+
+  //funcion para cerrar sesion
+  async salir(){
+    const alert = await this.alertController.create({
+      header: 'Salir',
+      message: '¿Seguro que quieres salir?',
+      buttons: [
+        {
+          text: 'No',
+          handler: () => {
+
+          }
+        }, {
+          text: 'Si',
+          handler: () => {
+            localStorage.removeItem('ingresado');
+            this.navCtrl.navigateRoot('');
+
+          }
+        }
+      ]
+    });
+    await alert.present();
   }
 
 }

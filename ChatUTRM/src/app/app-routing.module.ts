@@ -1,21 +1,28 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { IngresadoGuard } from './ingresado.guard';
+import { NoIngresadoGuard } from './no-ingresado.guard';
 
 const routes: Routes = [
   {
     path: '',
-    loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
+    loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule),
+    canActivate:[NoIngresadoGuard]
   },
   {
     path: 'chat',
-    loadChildren: () => import('./pages/chat/chat.module').then( m => m.ChatPageModule)
+    loadChildren: () => import('./pages/chat/chat.module').then( m => m.ChatPageModule),
+    canActivate: [IngresadoGuard]
   },
   {
     path: 'contactos',
-    loadChildren: () => import('./pages/contactos/contactos.module').then( m => m.ContactosPageModule)
-  },  {
+    loadChildren: () => import('./pages/contactos/contactos.module').then( m => m.ContactosPageModule),
+    canActivate: [IngresadoGuard]
+  },
+  {
     path: 'signup',
-    loadChildren: () => import('./pages/signup/signup.module').then( m => m.SignupPageModule)
+    loadChildren: () => import('./pages/signup/signup.module').then( m => m.SignupPageModule),
+    canActivate:[NoIngresadoGuard]
   },
 
 ];
