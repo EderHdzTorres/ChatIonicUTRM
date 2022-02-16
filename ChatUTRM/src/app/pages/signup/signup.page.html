@@ -1,18 +1,26 @@
-<ion-content style="border-left: 7px solid #ff987b;">
-  <div class="header">
-    <h3>Happy to see you</h3>
-    <h1>Create a<br>New account</h1>
-  </div>
-  <div class="form">
-    <ion-input type="email" placeholder="Email"></ion-input>
-    <ion-input placeholder="Username"></ion-input>
-    <ion-input type="password" placeholder="Password"></ion-input>
-  </div>
-  <div class="button signup" routerLink="/chat">
-    Signup <ion-icon name="chevron-forward-outline"></ion-icon>
-  </div>
-  <div class="footer signup-footer">
-    <h3 routerLink="">Already have an account? <span>Login</span></h3>
-  </div>
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+     <ion-card-title>Registro</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <form [formGroup]="formularioRegistro" (keyup.enter)="guardar()">
+        <ion-item>
+          <ion-label position="floating">Nombre</ion-label>
+          <ion-input formControlName="nombre"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Contraseña</ion-label>
+          <ion-input formControlName="password" type="password" ></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Confirmar contraseña</ion-label>
+          <ion-input formControlName="confirmacionPassword" type="password"></ion-input>
+        </ion-item>
+        <br>
+        <ion-button (click)="guardar()">Registrarse
+        </ion-button>
+      </form>
+    </ion-card-content>
+  </ion-card>
 </ion-content>
-
