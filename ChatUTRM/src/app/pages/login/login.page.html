@@ -1,9 +1,16 @@
-<ion-header>
-    <ion-toolbar>
-        <ion-title>Login</ion-title>
-    </ion-toolbar>
-</ion-header>
-
 <ion-content>
-
+  <div class="header">
+    <h3>welcome Back, <span id="user-name">Juan</span></h3>
+    <h1>Please Login<br>To Continue</h1>
+  </div>
+  <div class="form">
+    <ion-input type="email" placeholder="Email" value="Juan@gmail.com"></ion-input>
+    <ion-input type="password" placeholder="Password"></ion-input>
+  </div>
+  <div class="button" routerLink="/chat">
+    Login <ion-icon name="chevron-forward-outline"></ion-icon>
+  </div>
+  <div class="footer">
+    <h3 routerLink="/signup">Don't have an account? <span>Sign up</span></h3>
+  </div>
 </ion-content>

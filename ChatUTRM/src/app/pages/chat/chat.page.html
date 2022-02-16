@@ -1,9 +1,66 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>chat</ion-title>
-  </ion-toolbar>
+    <ion-toolbar>
+        <ion-title>chat</ion-title>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content>
+    <div class="header ion-padding">
+        <div class="info">
+            <ion-avatar>
+             <ion-icon name="chevron-back-outline" routerLink="/contactos"></ion-icon>
+                <img src="https://www.nacionrex.com/__export/1617916652840/sites/debate/img/2021/04/08/twice-jihyo-una-de-las-mejores-lideres-grupos-k-pop-ranking_1_crop1617916617769.jpg_172596871.jpg" alt="">
+            </ion-avatar>
+            <span class="details">
+      <h1>Jihyo</h1>
+      <p>En línea</p>
+    </span>
+        </div>
+        <div class="calling">
+            <ion-icon name="videocam-outline"></ion-icon>
+            <ion-icon name="call-outline"></ion-icon>
+        </div>
+    </div>
+    <div class="conversation ion-padding">
+        <div class="chat-section" id="chat">
+            <div class="chat">
+                <div class="yours message">
+                    Holaa
+                    <div class="message-other">
+                        <div class="message-other">
+                            Holis. Qué tal?
+                        </div>
+                        <div class="last-message-other">
+                            <ion-avatar>
+                                <img src="/src/assets/perfil/Jihyo.png">
+                            </ion-avatar>
+                            <div class="message last">
+                                Nada, aquí saludando. Cómo estás?
+                            </div>
+                        </div>
+                    </div>
+                    <span>13:26</span>
+                </div>
+                <div class="mine">
+                    <div class="message">
+                        Muy bien, todo genial, y tú?
+                    </div>
+                    <div class="message.last">
+                        De maravilla.
+                    </div>
+                    <span>
+                    <ion-icon name="checkmark-done-outline"></ion-icon>13:49
+                  </span>
+                </div>
+            </div>
+        </div>
+        <div class="message-input">
+            <ion-input placeholder="Escribir..."></ion-input>
+            <div class="send-button">
+                <ion-icon name="send-sharp"></ion-icon>
+            </div>
+        </div>
+    </div>
+
 
 </ion-content>
