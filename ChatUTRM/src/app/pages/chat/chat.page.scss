@@ -3,7 +3,7 @@ ion-content {
         width: 100% !important;
         height: 100% !important;
     }
-    --background: #7c7899;
+    --background: #007ac5;
     .header {
         display: flex;
         align-items: center;
@@ -12,15 +12,15 @@ ion-content {
         height: 10vh;
         ion-icon {
             font-size: 1.6rem;
-            color: #fff;
+            color: rgb(255, 255, 255);
         }
         .info {
             display: flex;
             align-items: center;
             ion-avatar {
                 max-width: 51px;
-                max-height: 51;
-                margin-left: 15px;
+                max-height: 30;
+                margin-left: 25px;
             }
             .details {
                 margin-left: 15px;
@@ -29,7 +29,7 @@ ion-content {
                 h1,
                 p {
                     margin: 0px;
-                    color: #fff;
+                    color: rgb(255, 255, 255);
                     margin-left: 10px;
                 }
                 h1 {
@@ -51,7 +51,7 @@ ion-content {
         }
     }
     .conversation {
-        background: #fff;
+        background: rgb(210, 234, 255);
         height: 90vh;
         margin-top: 5px;
         border-top-left-radius: 38px;
@@ -77,11 +77,11 @@ ion-content {
                     align-items: flex-start;
                     span {
                         font-size: 0.7rem;
-                        color: #a6a6a6;
+                        color: #000000;
                         margin-left: 40px;
                     }
                     .message {
-                        background: rgb(218, 218, 218);
+                        background: rgb(68, 215, 255);
                         position: relative;
                     }
                     .message.last {
@@ -92,7 +92,7 @@ ion-content {
                             bottom: 0px;
                             left: -7px;
                             height: 20px;
-                            background: #eee;
+                            background: rgb(255, 255, 255);
                             border-bottom-right-radius: 15px;
                         }
                         &:after {
@@ -102,7 +102,7 @@ ion-content {
                             bottom: 0px;
                             left: -10px;
                             height: 20px;
-                            background: #fff;
+                            background: rgb(0, 0, 0);
                             border-bottom-right-radius: 10px;
                         }
                     }
@@ -122,7 +122,7 @@ ion-content {
                     align-items: flex-end;
                     span {
                         font-size: 0.7rem;
-                        color: #a6a6a6;
+                        color: #000000;
                         display: flex;
                         align-items: center;
                         margin-right: 10px;
@@ -133,7 +133,7 @@ ion-content {
                     .message {
                         color: #fff;
                         margin-left: 25%;
-                        background: #feacac;
+                        background: #237efd;
                         background-attachment: fixed;
                         position: relative;
                     }
@@ -146,7 +146,7 @@ ion-content {
                             right: -8px;
                             height: 20px;
                             width: 20px;
-                            background: #feacac;
+                            background: #0099f8;
                             background-attachment: fixed;
                             border-bottom-left-radius: 15px;
                         }
@@ -186,7 +186,7 @@ ion-content {
             }
             .send-button {
                 margin-left: 20px;
-                background: #feacac;
+                background: #287ec9;
                 padding: 12px 12px 9px 15px;
                 border-radius: 50%;
                 color: #fff;
