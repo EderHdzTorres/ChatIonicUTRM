@@ -1,7 +1,7 @@
 ion-content {
     ion-avatar {
         width: 100% !important;
-        height: 100% !important;
+        /*height: -1% !important;*/
     }
     --background: #007ac5;
     .header {
@@ -19,8 +19,8 @@ ion-content {
             align-items: center;
             ion-avatar {
                 max-width: 51px;
-                max-height: 30;
-                margin-left: 25px;
+                max-height: 51px;
+                margin-left: 15px;
             }
             .details {
                 margin-left: 15px;
@@ -57,8 +57,6 @@ ion-content {
         border-top-left-radius: 38px;
         border-top-right-radius: 38px;
         .chat-section {
-            height: calc(100% - 90px);
-            overflow: scroll;
             .chat {
                 display: flex;
                 flex-direction: column;
@@ -82,7 +80,7 @@ ion-content {
                     }
                     .message {
                         background: rgb(68, 215, 255);
-                        position: relative;
+                        /*position: relative;*/
                     }
                     .message.last {
                         &:before {
@@ -92,7 +90,8 @@ ion-content {
                             bottom: 0px;
                             left: -7px;
                             height: 20px;
-                            background: rgb(255, 255, 255);
+                            width: 20px;
+                            /*background: #eee;*/
                             border-bottom-right-radius: 15px;
                         }
                         &:after {
@@ -101,6 +100,7 @@ ion-content {
                             z-index: 1px;
                             bottom: 0px;
                             left: -10px;
+                            width: 10px;
                             height: 20px;
                             background: rgb(0, 0, 0);
                             border-bottom-right-radius: 10px;
@@ -135,7 +135,7 @@ ion-content {
                         margin-left: 25%;
                         background: #237efd;
                         background-attachment: fixed;
-                        position: relative;
+                        /*position: relative;*/
                     }
                     .message.last {
                         &:before {
@@ -146,7 +146,7 @@ ion-content {
                             right: -8px;
                             height: 20px;
                             width: 20px;
-                            background: #0099f8;
+                            /*background: #0099f8;*/
                             background-attachment: fixed;
                             border-bottom-left-radius: 15px;
                         }
@@ -164,7 +164,7 @@ ion-content {
                     }
                 }
                 .other {
-                    margin-right: 45px;
+                    margin-left: 45px;
                 }
             }
         }
