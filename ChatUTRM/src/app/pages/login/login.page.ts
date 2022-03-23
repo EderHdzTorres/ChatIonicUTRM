@@ -43,7 +43,9 @@ export class LoginPage implements OnInit {
       const query: any = await this.userService.login(user);
       console.log(query);
       if(query && query.ok){
+        localStorage.setItem('TK1983!','ASDFASD');
         localStorage.setItem('userId', query.user.id);
+        localStorage.setItem('ingresado','true');
         this.socketService.login(query.user);
         await this.router.navigate(['/contactos'], { queryParams: query.user });
         //this.redirect('/home/tab1');

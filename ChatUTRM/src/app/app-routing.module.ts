@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-import { IngresadoGuard } from './ingresado.guard';
+import { UserServiceGuard, IngresadoGuard} from './ingresado.guard';
 import { NoIngresadoGuard } from './no-ingresado.guard';
 
 const routes: Routes = [
@@ -12,17 +12,17 @@ const routes: Routes = [
   {
     path: 'chat',
     loadChildren: () => import('./pages/chat/chat.module').then( m => m.ChatPageModule),
-    canActivate: [IngresadoGuard]
+    canActivate: [UserServiceGuard, IngresadoGuard]
   },
   {
     path: 'contactos',
     loadChildren: () => import('./pages/contactos/contactos.module').then( m => m.ContactosPageModule),
-    canActivate: [IngresadoGuard]
+    canActivate: [UserServiceGuard]
   },
   {
     path: 'signup',
     loadChildren: () => import('./pages/signup/signup.module').then( m => m.SignupPageModule),
-    canActivate:[NoIngresadoGuard]
+    //canActivate:[NoIngresadoGuard]
   },
 
 ];

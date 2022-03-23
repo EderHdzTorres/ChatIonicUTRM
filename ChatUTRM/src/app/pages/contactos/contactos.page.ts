@@ -28,6 +28,8 @@ export class ContactosPage implements OnInit {
           text: 'Si',
           handler: () => {
             localStorage.removeItem('ingresado');
+            localStorage.removeItem('TK1983!');
+            localStorage.removeItem('userId');
             this.navCtrl.navigateRoot('');
 
           }

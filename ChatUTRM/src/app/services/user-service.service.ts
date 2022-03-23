@@ -30,5 +30,7 @@ export class UserServiceService {
 
   logout() {
     localStorage.removeItem(this.JWToken);
+    localStorage.removeItem('TK1983!');
+    localStorage.removeItem('userId');
   }
 }
