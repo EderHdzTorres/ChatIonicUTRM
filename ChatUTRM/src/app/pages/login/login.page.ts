@@ -45,7 +45,7 @@ export class LoginPage implements OnInit {
       if(query && query.ok){
         localStorage.setItem('userId', query.user.id);
         this.socketService.login(query.user);
-        await this.router.navigate(['/contactos'], { queryParams: query.user });
+        await this.router.navigate(['/home/tab1'], { queryParams: query.user });
         //this.redirect('/home/tab1');
       } else {
         await this.generalService.presentAlert('Error', '', 'User not found');
