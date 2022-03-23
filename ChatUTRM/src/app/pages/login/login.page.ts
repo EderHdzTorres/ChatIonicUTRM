@@ -1,55 +1,57 @@
 import { Component, OnInit } from '@angular/core';
-import {
-  FormGroup,
-  FormControl,
-  Validators,
-  FormBuilder
-} from '@angular/forms';
+import { Router } from '@angular/router';
+import { AlertController } from '@ionic/angular';
 import { SocketServiceService } from '../../services/socket-service.service';
+import { UserService } from '../../services/user.service';
+import { GeneralService } from '../../services/general.service';
 
-import { AlertController, NavController } from '@ionic/angular';
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
 })
-export class LoginPage implements OnInit 
-{
+export class LoginPage implements OnInit {
 
-  formularioLogin: FormGroup;
+  public username: string;
+  public password: string;
 
-  constructor(public fb: FormBuilder,    public alertController:AlertController,
-    public navCtrl: NavController) {
+  constructor(
+    private router: Router,
+    public alertController: AlertController,
+    private socketService: SocketServiceService,
+    public generalService: GeneralService,
+    private userService: UserService
+  ) { }
 
-   this.formularioLogin = this.fb.group({
-      'nombre': new FormControl ("",Validators.required),
-      'password': new FormControl("",Validators.required)
-    })
-
-  }
-  async ingresar(){
-    var f = this.formularioLogin.value;
-
-    var usuario= JSON. parse(localStorage.getItem('usuario'));
-    if(usuario.nombre==f.nombre && usuario.password == f.password)
-    {
-       console.log('Ingresado');
-       //la sesion se encuentra activa
-       localStorage.setItem('ingresado','true');
-       this.navCtrl.navigateRoot('contactos');
-    }
-    else{
-       const alert = await this.alertController.create({
-         header: 'Datos incorrectos',                       
-         message: 'Los datos que ingresaste son incorrectos.',
-         buttons: ['Aceptar']
-       });
-      await alert.present();
-    }
- 
+  ngOnInit() {
   }
 
-  ngOnInit() 
-  {
+  redirect(url) {
+    this.router.navigateByUrl(url);
+  }
+
+  async signIn(){
+    console.log(this.username, this.password);
+
+    if(this.username && this.password ) {
+      const user = {
+        condition: {
+          username: this.username,
+          password: this.password
+        }
+      };
+      const query: any = await this.userService.login(user);
+      console.log(query);
+      if(query && query.ok){
+        localStorage.setItem('userId', query.user.id);
+        this.socketService.login(query.user);
+        await this.router.navigate(['/contactos'], { queryParams: query.user });
+        //this.redirect('/home/tab1');
+      } else {
+        await this.generalService.presentAlert('Error', '', 'User not found');
+      }
+    } else {
+      await this.generalService.presentAlert('Error', '', 'User not found');
+    }
   }
 }
