@@ -5,6 +5,8 @@ import {
   Validators,
   FormBuilder
 } from '@angular/forms';
+import { SocketServiceService } from '../services/socket-service.service';
+
 import { AlertController, NavController } from '@ionic/angular';
 @Component({
   selector: 'app-login',
