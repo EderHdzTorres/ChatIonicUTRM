@@ -12,7 +12,7 @@ const routes: Routes = [
   {
     path: 'chat',
     loadChildren: () => import('./pages/chat/chat.module').then( m => m.ChatPageModule),
-    canActivate: [UserServiceGuard, IngresadoGuard]
+    canActivate: [UserServiceGuard]
   },
   {
     path: 'contactos',
