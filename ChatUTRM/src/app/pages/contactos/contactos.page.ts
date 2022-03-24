@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import { SocketServiceService } from '../../services/socket-service.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import { UserService } from '../../services/user.service';
+import { AlertController, NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-contactos',
@@ -29,7 +30,9 @@ export class ContactosPage implements OnInit {
     private socketService: SocketServiceService,
     private route: ActivatedRoute,
     private service: UserService,
-    private router: Router
+    private router: Router,
+    public alertController: AlertController,
+    public navCtrl: NavController
     ) {}
 
   ngOnInit() {
@@ -60,4 +63,35 @@ export class ContactosPage implements OnInit {
   hola(){
     console.log('hola');
   }
+
+
+  async salir(){
+    const alert = await this.alertController.create({
+      header: 'Salir',
+      message: '¿Seguro que quieres salir?',
+      buttons: [
+        {
+          text: 'No',
+          handler: () => {
+
+          }
+        }, {
+          text: 'Si',
+          handler: () => {
+            localStorage.removeItem('ingresado');
+            localStorage.removeItem('TK1983!');
+            localStorage.removeItem('userId');
+            this.navCtrl.navigateRoot('');
+
+          }
+        }
+      ]
+    });
+    await alert.present();
+
+
+  }
+
+
+
 }
