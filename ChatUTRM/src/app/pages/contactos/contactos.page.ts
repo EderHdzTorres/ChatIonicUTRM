@@ -54,7 +54,7 @@ export class ContactosPage implements OnInit {
   }
 
   async navigateToChat(id) {
-    await this.router.navigate(['/home/tab2'], { queryParams: { userId: id } } );
+    await this.router.navigate(['/chat'], { queryParams: { userId: id } } );
   }
 
   hola(){
