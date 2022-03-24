@@ -1,109 +1,66 @@
-<ion-header>
+<ion-header [translucent]="true">
     <ion-toolbar>
-        <ion-title>Contactos</ion-title>
-        <ion-button (click)="salir()" class="btnsalir">
-            <ion-label class="lbsalir">Cerrar sesión</ion-label>
-        </ion-button>
+      <ion-title>
+        Contacts
+      </ion-title>
     </ion-toolbar>
-</ion-header>
-
-<ion-content>
-
+  </ion-header>
+  
+  <ion-content [fullscreen]="true">
     <ion-list>
-        <ion-item>
+      <ion-list-header> Recent Conversations </ion-list-header>
+    <ion-header collapse="condense">
+      <ion-toolbar>
+        <ion-title size="large">Tab 1</ion-title>
+      </ion-toolbar>
+    </ion-header>
+  
+      <div *ngFor="let item of onlineUsers">
+        <div *ngIf="item.id != userId">
+          <ion-item (click)="navigateToChat(item.id)">
             <ion-avatar slot="start">
-                <img src="https://pm1.narvii.com/6940/905de7f8be63f00120df78d761c185189590edear1-256-256v2_128.jpg">
+              <img src="{{item.avatar}}" />
             </ion-avatar>
             <ion-label>
-                <h2>Sana</h2>
-                <h3>Amo el K-Pop</h3>
+              <h2>{{item.username}}</h2>
+              <!--      <h3>I'm a big deal</h3>-->
+              <!--      <p>Listen, I've had a pretty messed up day...</p>-->
             </ion-label>
-        </ion-item>
-
-        <ion-item>
-            <ion-avatar slot="start">
-                <img src="https://www.nacionrex.com/__export/1630185464835/sites/debate/img/2021/08/28/lisa-estrella-paseo-de-la-fama-hollywood_1_crop1630184313534.jpg_172596871.jpg">
-            </ion-avatar>
-            <ion-label>
-                <h2>Lisa</h2>
-                <h3>No soy presumida, solo soy la mejor</h3>
-            </ion-label>
-        </ion-item>
-
-        <ion-item>
-            <ion-avatar slot="start">
-                <img src="https://www.nacionrex.com/__export/1604683703477/sites/debate/img/2020/11/06/red-velvet-irene-curiosidades-datos-historias_1_crop1604683638310.jpg_172596871.jpg">
-            </ion-avatar>
-            <ion-label>
-                <h2>Irene</h2>
-                <h3>Holis</h3>
-            </ion-label>
-        </ion-item>
-
-        <ion-item>
-            <ion-avatar slot="start">
-                <img src="https://i1.wp.com/celebriteen.com.mx/wp-content/uploads/2021/01/Jisoo-BLACKPINK.jpg?resize=840%2C560&ssl=1">
-            </ion-avatar>
-            <ion-label>
-                <h2>Jiso</h2>
-                <h3>Tengo una serie en Disney+</h3>
-            </ion-label>
-        </ion-item>
-
-        <ion-item routerLink="/chat">
-            <ion-avatar slot="start">
-                <img src="https://www.nacionrex.com/__export/1617916652840/sites/debate/img/2021/04/08/twice-jihyo-una-de-las-mejores-lideres-grupos-k-pop-ranking_1_crop1617916617769.jpg_172596871.jpg">
-            </ion-avatar>
-            <ion-label>
-                <h2>Jihyo</h2>
-                <h3>Líder de Twice</h3>
-            </ion-label>
-        </ion-item>
-
-        <ion-item>
-            <ion-avatar slot="start">
-                <img src="https://i.pinimg.com/564x/1e/c5/b3/1ec5b3d0c1eb3b8759f7a6de9150fbf5.jpg">
-            </ion-avatar>
-            <ion-label>
-                <h2>Seulgi</h2>
-                <h3>La Bias</h3>
-            </ion-label>
-        </ion-item>
-
-        <ion-item>
-            <ion-avatar slot="start">
-                <img src="https://pm1.narvii.com/6623/d89e54ce3d046a74a4bc3ab4a455dec3e434e428_hq.jpg">
-            </ion-avatar>
-            <ion-label>
-                <h2>Joy</h2>
-                <h3>La bias wrecker</h3>
-            </ion-label>
-        </ion-item>
-
-        <ion-item>
-            <ion-avatar slot="start">
-                <img src="https://pm1.narvii.com/6444/534fa87e6cd79de894aa4a40751ddd172d292598_128.jpg">
-            </ion-avatar>
-            <ion-label>
-                <h2>Lee Ji Eun</h2>
-                <h3>La chica problemas</h3>
-            </ion-label>
-        </ion-item>
-
-        <ion-item>
-            <ion-avatar slot="start">
-                <img src="https://laverdadnoticias.com/__export/1624157183617/sites/laverdad/img/2021/06/19/taeyeon_girls_generation_fans.jpg_793492074.jpg">
-            </ion-avatar>
-            <ion-label>
-                <h2>Taeyeon</h2>
-                <h3>INV U</h3>
-            </ion-label>
-        </ion-item>
-
+          </ion-item>
+        </div>
+      </div>
+  
+  <!--  <ion-item>-->
+  <!--    <ion-avatar slot="start">-->
+  <!--      <img src="https://ionicframework.com/docs/demos/api/list/avatar-han.png" />-->
+  <!--    </ion-avatar>-->
+  <!--    <ion-label>-->
+  <!--      <h2>Han</h2>-->
+  <!--      <h3>Look, kid...</h3>-->
+  <!--      <p>I've got enough on my plate as it is, and I...</p>-->
+  <!--    </ion-label>-->
+  <!--  </ion-item>-->
+  
+  <!--  <ion-item>-->
+  <!--    <ion-avatar slot="start">-->
+  <!--      <img src="https://ionicframework.com/docs/demos/api/list/avatar-rey.png" />-->
+  <!--    </ion-avatar>-->
+  <!--    <ion-label>-->
+  <!--      <h2>Rey</h2>-->
+  <!--      <h3>I can handle myself</h3>-->
+  <!--      <p>You will remove these restraints and leave...</p>-->
+  <!--    </ion-label>-->
+  <!--  </ion-item>-->
+  
+  <!--  <ion-item>-->
+  <!--    <ion-avatar slot="start">-->
+  <!--      <img src="https://ionicframework.com/docs/demos/api/list/avatar-luke.png" />-->
+  <!--    </ion-avatar>-->
+  <!--    <ion-label>-->
+  <!--      <h2>Luke</h2>-->
+  <!--      <h3>Your thoughts betray you</h3>-->
+  <!--      <p>I feel the good in you, the conflict...</p>-->
+  <!--    </ion-label>-->
+  <!--  </ion-item>-->
     </ion-list>
-
-
-
-
-
-</ion-content>
+  </ion-content>
