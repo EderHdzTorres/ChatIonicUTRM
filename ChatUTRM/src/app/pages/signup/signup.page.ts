@@ -34,7 +34,7 @@ export class SignupPage implements OnInit {
     if(query && query.ok) {
       const alert = await this.generalService.presentAlert('Exitoso', '', 'Usuario creado correctamente');
       localStorage.setItem('TK1983!','ASDFASD');
-      this.redirect('/contactos');
+      this.redirect('/');
 
     } else {
       await this.generalService.presentAlert('Error', '', 'Usuario no creado');

@@ -20,6 +20,17 @@ export class SocketServiceService {
     this.socket.emit('login', user);
   }
 
+  public paginaRecargada(userId) {
+    this.socket.emit('paginaRecargada', userId);
+  }
+
+  public usuariosConectados() {
+    this.socket.on('usuariosConectados', (users) => {
+      this.onlineUsers$.next(users);
+    });
+    return this.onlineUsers$.asObservable();
+  }
+
   public sendMessage(message) {
     this.socket.emit('new-message', message);
   }

@@ -3,6 +3,7 @@ import { FormsModule } from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {  UserService } from '../../services/user.service';
 import {SocketServiceService} from "../../services/socket-service.service";
+import { UserServiceService } from 'src/app/services/user-service.service';
 
 @Component({
   selector: 'app-chat',
@@ -25,13 +26,18 @@ export class ChatPage implements OnInit {
   public myUserId: any;
   public conversationUuid: string;
   public otraPersona: any;
-
-  constructor(private route: ActivatedRoute, private service: UserService, private socketService: SocketServiceService) {
+  public token;
+  constructor(
+    private route: ActivatedRoute, private service: UserService,
+     private socketService: SocketServiceService,
+     private userService: UserServiceService
+     ) {
     console.log(this.messageList);
   }
 
   async ngOnInit() {
     console.log('init tab');
+    this.recargarPagina();
     const user = this.route.snapshot.queryParams;
     if (user && user.userId) {
       this.selectedUserId = parseInt(user.userId, 10);
@@ -60,6 +66,20 @@ export class ChatPage implements OnInit {
     });
 
     console.log('init tab', user);
+  }
+
+  
+  async recargarPagina()
+  {    
+    this.token = this.userService.getToken();
+
+    if (this.token !== null) 
+    {
+      this.socketService.paginaRecargada(localStorage.getItem("userId"));
+
+    }
+
+
   }
 
   async sendMessage() {

@@ -3,6 +3,7 @@ import { SocketServiceService } from '../../services/socket-service.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import { UserService } from '../../services/user.service';
 import { AlertController, NavController } from '@ionic/angular';
+import { UserServiceService } from 'src/app/services/user-service.service';
 
 @Component({
   selector: 'app-contactos',
@@ -24,21 +25,22 @@ export class ContactosPage implements OnInit {
   public onlineUsers = [];
   // public user: User;
   public userId: any;
+  public token;
 
 
   constructor(
     private socketService: SocketServiceService,
     private route: ActivatedRoute,
     private service: UserService,
+    private userService: UserServiceService,
     private router: Router,
     public alertController: AlertController,
     public navCtrl: NavController
     ) {}
 
   ngOnInit() {
-      console.log('Me conctpppppppppppppppppppoooooooooooo');
-
     this.userId = this.service.getId();
+    this.recargarPagina();
     // console.log('init tab');
     // this.user = this.route.snapshot.queryParams;
     // console.log('init tab', this.user);
@@ -54,14 +56,32 @@ export class ContactosPage implements OnInit {
         this.onlineUsers = users;
       }
     });
+
+
+    this.socketService.usuariosConectados().subscribe((users) => {
+      console.log('users connected', users);
+      if(users) {
+        this.onlineUsers = users;
+      }
+    });
   }
 
   async navigateToChat(id) {
     await this.router.navigate(['/chat'], { queryParams: { userId: id } } );
   }
 
-  hola(){
-    console.log('hola');
+
+  async recargarPagina()
+  {    
+    this.token = this.userService.getToken();
+
+    if (this.token !== null) 
+    {
+      this.socketService.paginaRecargada(localStorage.getItem("userId"));
+
+    }
+
+
   }
 
 
